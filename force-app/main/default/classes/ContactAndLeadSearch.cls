@@ -3,7 +3,7 @@ public class ContactAndLeadSearch {
      List<List<sObject>> searchList = [FIND :str IN ALL FIELDS
                     RETURNING Contact(FirstName,LastName),Lead(FirstName,LastName)]; 
         return searchList;
-        
+         
     } 
 
 }
