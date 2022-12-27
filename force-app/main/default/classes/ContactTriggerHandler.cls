@@ -6,7 +6,7 @@ public class ContactTriggerHandler {
         List<Id> accountIdList = new List<Id>();
         for(contact c:afterlist){
           accountIdList .add(c.AccountId); 
-        }
+        }  
         
         List<Account> acctsWithContacts = [SELECT ID,NumberOfContact__c,(SELECT ID FROM Contacts)
                                            FROM Account
