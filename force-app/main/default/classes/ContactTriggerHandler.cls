@@ -1,12 +1,12 @@
 public class ContactTriggerHandler {
     
-    // method for insetring 
-    public static void onAfterInsert(List<Contact>afterlist){
+// method for insetring // 
+         public static void onAfterInsert(List<Contact>afterlist){
         
         List<Id> accountIdList = new List<Id>();
         for(contact c:afterlist){
           accountIdList .add(c.AccountId); 
-        }  
+        }
         
         List<Account> acctsWithContacts = [SELECT ID,NumberOfContact__c,(SELECT ID FROM Contacts)
                                            FROM Account
@@ -20,16 +20,16 @@ public class ContactTriggerHandler {
     }
     
     
-    // method for updating 
-    public static void onAfterUpdate(List<Contact>afterupdate1,List<Contact>afterupdate2){
+// method for updating //
+         public static void onAfterUpdate(List<Contact>newlist,List<Contact>oldlist){
         
         List<Id> accountIdList = new List<Id>();
         
-        for(contact c:afterupdate1){
+        for(contact c:newlist){
             accountIdList.add(c.AccountId);
         }
         
-        for(contact c: afterupdate2){
+        for(contact c:oldlist){
             accountIdList.add(c.AccountId);
         }
         
@@ -46,10 +46,11 @@ public class ContactTriggerHandler {
         
     }
     
-    //method for deleting 
-    public static void onAfterDelete(List<Contact>aftrdel ){
+
+// method for deleting // 
+        public static void onAfterDelete(List<Contact>deletelist ){
         List<Id> accountIdList = new List<Id>();
-        for(contact c:aftrdel){
+        for(contact c:deletelist){
             accountIdList.add(c.AccountId);
         }
         List<Account> acctsWithContacts = [SELECT ID,NumberOfContact__c,(SELECT ID FROM Contacts)
