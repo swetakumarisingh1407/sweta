@@ -7,7 +7,7 @@ public class OpportunityTriggerHandler {
         Map < String, Opportunity_data__mdt > metadatanextstep = new Map <String, Opportunity_data__mdt>(); //creating map for custom data
         // fetching al the data from custom meta data 
         for(Opportunity_data__mdt metadetails : [SELECT Id,MasterLabel,TASK_SUBJECT__c FROM Opportunity_data__mdt])
-        {
+        {  
             metadatanextstep.put(metadetails.MasterLabel,metadetails);
         }
         system.debug(' metadatanextstep  '+metadatanextstep);
