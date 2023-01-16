@@ -1,18 +1,15 @@
 public class AccountHandler {
-    public static Account insertNewAccount(String str){
-        try {
-    // This causes an exception because 
-    //   the required Name field is not provided.
-    Account acct = new Account(Name=str);
-    // Insert the account 
-    insert acct;
-    return acct;        
-} catch (DmlException e) {
-    System.debug('A DML exception has occurred: ' +
-                e.getMessage());
-    return null;
-}
-        
+    public static void insertAccount(Integer numberofnewaccounts){
+        List<Account> addAccounts = new List<Account>();
+        Integer N=1;
+        while(N<=numberofnewaccounts){
+            Account store = new Account();
+            store.Name= 'Acme Inc ' + N;
+            store.AccountNumber = ' A000' + N;
+            addAccounts.add(store);
+            N=N+1;
+            
+        }
+      insert addAccounts;
     }
-
 }
